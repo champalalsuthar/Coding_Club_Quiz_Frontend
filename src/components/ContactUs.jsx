@@ -11,7 +11,7 @@ const ContactUs = () => {
                     <p className="text-lg m-4">If you have any questions, feedback, or concerns, feel free to reach out to us. We value your input and are here to assist you. Please use the following contact information or the contact form below.</p>
                 </div>
                 <div class="lg:w-1/2 ">
-                    <form action="https://formspree.io/f/mbjvvdoj" method="post" className=" ">
+                    <form action="https://formspree.io/f/xoqgvbyq" method="post" className=" ">
                         <div className="mb-4 ">
                             <label for="name" className="block text-gray-700 px-1 text-sm font-bold mb-2">Name:</label>
                             <input type="text" id="name" name="name" className="border outline-none rounded w-full py-2 px-3 focus:outline-none " />
