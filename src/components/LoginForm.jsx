@@ -83,7 +83,7 @@ const LoginForm = ({ setIsLoggedIn }) => {
 
             </UserContext.Provider>
             <div>
-                <form autoComplete="on" className="flex flex-col gap-y-4 w-full mt-6" onSubmit={submithandler}>
+                <form autoComplete="off" className="flex flex-col gap-y-4 w-full mt-6" onSubmit={submithandler}>
                     <label className="w-full " >
                         <p className="text-[0.875rem]  text-black mb-1 leading-[1.375]">Email address: <sup className="text-red-400">*</sup></p>
                         <input className="bg-slate-500 rounded-[0.5rem] 
@@ -96,7 +96,6 @@ const LoginForm = ({ setIsLoggedIn }) => {
                             onChange={changeHandler} >
                         </input>
                     </label>
-
                     <label className="w-full relative" >
                         <p className="text-[0.875rem]  text-black mb-1 leading-[1.375]">
                             password: <sup className="text-red-400">*</sup></p>
