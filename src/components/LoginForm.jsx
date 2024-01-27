@@ -14,7 +14,7 @@ const LoginForm = ({ setIsLoggedIn }) => {
     const [showPassword, setShowPassword] = useState(true);
 
     // const [data, setData] = useState([]);
-    const [Username, setUsername] = useState("vinay")
+    const [Username, setUsername] = useState("")
     // console.log(data);
 
     // const getData = () => {
