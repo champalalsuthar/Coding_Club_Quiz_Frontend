@@ -15,7 +15,7 @@ const Home = (isLoggedIn) => {
             <HeroSection />
             <HomePageQuiz />
             <ContactUs />
-            <Team />
+{/*             <Team /> */}
             <Footer />
         </>
     );
