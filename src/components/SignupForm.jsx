@@ -37,7 +37,7 @@ const SignupForm = ({ setIsLoggedIn }) => {
             ...accountData, accountType
         }
 
-        axios.post("http://localhost:5000/signup", FormData).then((response) => {
+        axios.post("https://coding-club-quiz-backend.vercel.app/signup", FormData).then((response) => {
 
             if (response.data.code == 200) {
                 toast.success("Account created")
