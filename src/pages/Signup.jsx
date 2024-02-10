@@ -11,7 +11,7 @@ const Signup = ({ setIsLoggedIn }) => {
         <div className="bg-white">
             <div>
                 <Templat
-                    title="Join with Coding Clu"
+                    title="Join with Coding Club"
                     desc1="Build skills for today,tomorrow,and beyond."
                     desc2="Education to fature-proof your career."
                     image={signupformimg3}
