@@ -15,7 +15,7 @@ import mongodb3 from "../Assets/Quizeslogo/mongodb3png.png"
 
 
 const Quizes = () => {
-    const [data, setData] = useState([]);
+    // const [data, setData] = useState([]);
     // useEffect(()=>
     // {
     //     async function getData() {
@@ -59,7 +59,7 @@ const Quizes = () => {
     // console.log(data);
 
     return (
-        <div >
+        <div className=" pt-28">
             <div className="w-full  flex flex-wrap gap-20 items-center justify-around p-10">
                 <div className="text-center xl:w-1/4  sm:w-1 bg-white p-8 rounded-md shadow-md transform hover:scale-105 transition-transform duration-300 ease-in-out">
                     <h1 className="text-lg sm:text-sm font-bold m-1">HTML</h1>
@@ -83,7 +83,7 @@ const Quizes = () => {
                     <h1 className="text-xl font-bold m-1">NodeJs</h1><img src={nodejs2} alt="Kitten" className=" w-full h-full mb-4 rounded-md shadow-md" />
                     <Link to="/nodejsquiz" className="hover:bg-indigo-500   text-white py-2 px-4 rounded bg-green-600 transition duration-300 m-4 ">Attempt Quiz</Link>
                 </div>
-                
+
                 <div className="text-center  xl:w-1/4 sm:w-1 bg-white p-8 rounded-md shadow-md transform hover:scale-105 transition-transform duration-300 ease-in-out">
                     <h1 className="text-xl font-bold m-1">MongoDb</h1><img src={mongodb3} alt="Kitten" className=" w-full h-full mb-4 rounded-md shadow-md" />
                     <Link to="/mongodbquiz" className="hover:bg-indigo-500   text-white py-2 px-4 rounded bg-green-600 transition duration-300 m-4 ">Attempt Quiz</Link>

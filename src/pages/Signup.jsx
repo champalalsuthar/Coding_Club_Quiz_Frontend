@@ -7,8 +7,8 @@ import signupformimg3 from "../Assets/signupformimg3.jpg"
 
 const Signup = ({ setIsLoggedIn }) => {
 
-    return (
-        <div className="bg-white">
+    return (    
+        <div className="bg-white pt-28 ">
             <div>
                 <Templat
                     title="Join with Coding Club"

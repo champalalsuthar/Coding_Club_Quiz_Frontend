@@ -1,22 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios"
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { createContext } from "react";
-const UserContext = createContext();
+
 
 const LoginForm = ({ setIsLoggedIn }) => {
-
     const Navigate = useNavigate();
     const [FormData, setFormData] = useState({ email: "", password: "" })
     const [showPassword, setShowPassword] = useState(true);
-
-    // const [data, setData] = useState([]);
-    const [Username, setUsername] = useState("")
-    // console.log(data);
-
+    const [userData, setUserData] = useState(null);
+ 
     // const getData = () => {
     //     fetch('data.json'
     //         , {
@@ -48,42 +43,61 @@ const LoginForm = ({ setIsLoggedIn }) => {
         }))
 
     }
+
     function submithandler(event) {
         event.preventDefault();
-        axios.post("https://coding-club-quiz-backend.vercel.app/signin", FormData).then((response) => {
-            console.log(response.data.Username);
 
+        if (FormData.password.length < 6) {
+            toast.error("password must be 6 char!", {
+                position: "top-center"
+            });
+            return;
+        }
 
-            console.log(response)
-            if (response.data.code == 200) {
+       
+        // axios.post("http://localhost:5000/signin", FormData).then((response) => {
+    axios.post("https://coding-club-quiz-backend.vercel.app/signin", FormData).then((response) => {
+            // const token = response.data.token;
+            // console.log(token);
+            if (response.data.code === 200) {
+                const user2 = response.data.data;
+                console.log("User details:", user2);
+                setUserData(user2);
+                // console.log(userData);
+                toast.success(response.data.message, {
+                    position: toast.POSITION.TOP_CENTER,
+                });
+                window.localStorage.setItem("token", response.data.token);
+                // window.location.href="/dashboard"
                 setIsLoggedIn(true);
-                setUsername(response.data.Username);
-
-                toast.success("logged in");
-                Navigate("/dashboard");
+                Navigate('/dashboard', { state: { user: user2 } });
+            } else if (response.data.code === 300) {
+                toast.error(response.data.message, {
+                    position: toast.POSITION.TOP_CENTER,
+                });
+                // alert("Incorrect Password");
+            } else {
+                toast.error(response.data.message, {
+                    position: toast.POSITION.TOP_CENTER,
+                });
+                // alert("User not registered");
+                Navigate("/signup");
             }
-            else if (response.data.code == 300) {
-                alert("password does not match")
-
-            }
-            else {
-                alert("User not register ")
-                Navigate("/signup")
-            }
-
         }).catch((err) => {
-            console.log(err)
-        })
+            console.log(err);
+        });
+
     }
-    console.log(Username);
+    useEffect(() => {
+        setIsLoggedIn(false);
+    }, [setIsLoggedIn]);
+
 
     return (
         <div>
-            <UserContext.Provider value={Username}>
-
-            </UserContext.Provider>
+            {/* <userContext.Provider   >   //value={user}  value={ {user:  {user} } }  */}
             <div>
-                <form autoComplete="off" className="flex flex-col gap-y-4 w-full mt-6" onSubmit={submithandler}>
+                <form autoComplete="on" className="flex flex-col gap-y-4 w-full mt-6" onSubmit={submithandler}>
                     <label className="w-full " >
                         <p className="text-[0.875rem]  text-black mb-1 leading-[1.375]">Email address: <sup className="text-red-400">*</sup></p>
                         <input className="bg-slate-500 rounded-[0.5rem] 
@@ -125,8 +139,10 @@ const LoginForm = ({ setIsLoggedIn }) => {
              font-medium py-[8px] px-[12px] mt-6" >Sign In</button>
                 </form>
             </div>
+            {/* </userContext.Provider> */}
+
         </div>
     );
 }
-export { UserContext };
+// export { userContext };
 export default LoginForm;

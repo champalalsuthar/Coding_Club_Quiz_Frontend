@@ -43,7 +43,7 @@ const JsQuiz = () => {
     }
     console.log(JsQuizData.length);
     return (
-        <div className="w-1/2 m-auto  p-6 bg-white rounded-md shadow-lg">
+        <div className="lg:w-1/2  pt-28 m-auto  p-6 bg-white rounded-md shadow-lg">
             <div className="">
                 {(showResult) ? (
                     <Result score={score} totalScore={JsQuizData.length} tryAgain={resetAll} />

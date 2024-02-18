@@ -7,7 +7,7 @@ const HomePageQuiz = () => {
 
     return (
         <>
-            <div className="lg:flex justify-around lg:h-[450px] items-center  bg-white text-black ">
+            <div className="lg:flex  justify-around lg:h-[450px] items-center  bg-white text-black ">
                 <div className="lg:w-1/2 p-10">
                     <img src={enterprise} alt="Quiz Image" className=" h-full  rounded" />
                 </div>

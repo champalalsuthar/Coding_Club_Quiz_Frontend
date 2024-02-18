@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <div className="footer w-full  bg-slate-400  tracking-widest">
-      <footer className="flex flex-col md:flex-row  gap-2  justify-evenly w-full  mb-2 p-10 ">
-        <div className=" flex flex-row justify-around items-center  w-full md:w-1/2">
+      <footer className="lg:flex flex-col md:flex-row  gap-2  justify-evenly w-full  mb-2 p-10 ">
+        <div className=" lg:flex flex-row justify-around   w-full md:w-1/2">
           <div className="w-full space-y-4">
             <h3
               className="text-xl uppercase p-1 border-b-2 text-cyan-700 font-bold border-white w-fit my-2"
@@ -34,8 +34,8 @@ const Footer = () => {
         </div>
 
         {/* F */}
-        <div className="flex flex-row w-full md:w-1/2">
-          <div className="w-full mt-4 space-y-4">
+        <div className="lg:flex flex-row justify-around w-full md:w-1/2">
+          <div className="w-full space-y-4 ">
             <h3
               className="text-xl uppercase text-cyan-700 font-bold p-1 border-b-2 border-white w-fit my-2"
 
@@ -82,7 +82,6 @@ const Footer = () => {
             ></iframe>
 
           </div>
-
         </div>
       </footer>
       <p className="text-sm text-white  text-center mt-4 pb-4">&copy; 2023 Coding Club. All rights reserved.</p>

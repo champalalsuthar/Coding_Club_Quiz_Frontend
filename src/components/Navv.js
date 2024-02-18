@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from "react-router-dom";
 
-const NavBar = (props) => {
+const Navv = (props) => {
     const Navigate = useNavigate();
     let isLoggedIn = props.isLoggedIn;
     let setIsLoggedIn = props.setIsLoggedIn;
@@ -34,10 +34,9 @@ const NavBar = (props) => {
         Navigate("/");
     };
     const validateTokenOnServer = async (token) => {
-        // console.log("Validating token on server");
-
         try {
-            const response = await fetch("http://localhost:5000/validateToken", {
+            // const response = await fetch("http://localhost:5000/validateToken", {
+            const response = await fetch("https://coding-club-quiz-backend.vercel.app/validateToken", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -46,7 +45,7 @@ const NavBar = (props) => {
             });
 
             const data = await response.json();
-            // console.log("Server Response:", data);
+            console.log("Server Response:", data);
             return data;
         } catch (error) {
             console.error("Error validating token:", error);
@@ -66,7 +65,7 @@ const NavBar = (props) => {
                 <img src={logo} height={30} width={80} loading="lazy" />
             </link> */}
             <nav>
-                <ul className="lg:flex font-bold lg:pl-20 gap-x-6 text-white lg:text-2xl  ">
+                <ul className="flex font-bold lg:pl-20  gap-x-1 md:gap-x-4 lg:gap-x-6 text-white text-sm lg:text-2xl   ">
                     <li >
                         <NavLink to="/">Home</NavLink> </li>
                     <li > <NavLink to="/quizes">Quizes</NavLink></li>
@@ -74,22 +73,22 @@ const NavBar = (props) => {
                     <li > <NavLink to="/about">About</NavLink></li>
                 </ul>
             </nav>
-            <div className="flex  gap-x-2 items-center  ">
+            <div className="flex  gap-x-2 items-center text-xs md:text-sm lg:text-xl     ">
                 {!isLoggedIn && <Link to="/login"> <button
                     className="bg-green-500 text-white py-[8px]
-                 px-[12px] rounded-[8px] m-2 border border-richblack-700">
+                 px-[12px] rounded-[8px] m-1 lg:m-2 border border-richblack-700">
                     Login</button></Link>}
                 {!isLoggedIn && <Link to="/signup"> <button
                     className="bg-green-500 text-white py-[8px]
-                 px-[12px] rounded-[8px]  m-2 border border-richblack-700" >
+                 px-[12px] rounded-[8px] m-1 lg:m-2 md:m-2 border border-richblack-700" >
                     Signup</button></Link>}
                 {isLoggedIn && <Link to="/Dashboard"> <button
                     className="bg-green-500 text-white py-[8px]
-                 px-[12px] rounded-[8px]  m-2 border border-richblack-700">
+                 px-[12px] rounded-[8px]  m-1 lg:m-2 md:m-2 border border-richblack-700">
                     Dashboard</button></Link>}
                 {isLoggedIn && <Link to="/"> <button
                     className="bg-green-500 text-white py-[8px]
-                 px-[12px] rounded-[8px]  m-2 border border-richblack-700"
+                 px-[12px] rounded-[8px] m-1 lg:m-2 md:m-2 border border-richblack-700"
                     // onClick={() => (setIsLoggedIn(false),
                     //     toast.success("Logged Out"))}
                     onClick={handleLogout}
@@ -98,4 +97,4 @@ const NavBar = (props) => {
         </div>
     );
 }
-export default NavBar;
+export default Navv;
