@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import { useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -16,6 +16,7 @@ const SignupForm = ({ setIsLoggedIn }) => {
     const [showPassword, setShowPassword] = useState(true);
     const [showconfirmFassword, setShowconfirmFassword] = useState(true);
     const [accountType, setAccountType] = useState("student");
+    const [show ,setShow]=useState(false);
 
     function changeHandler(event) {
         setFormData((prevData) => ({
@@ -24,6 +25,14 @@ const SignupForm = ({ setIsLoggedIn }) => {
         }))
 
     }
+    
+    function handelOTP() {
+
+    }
+    function handelSignup() {
+
+    }
+
     function submitHandlar(event) {
 
         event.preventDefault();
@@ -55,7 +64,7 @@ const SignupForm = ({ setIsLoggedIn }) => {
         }
 
         // axios.post("http://localhost:5000/signup", FormData).then((response) => {
-        axios.post("https://coding-club-quiz-backend.vercel.app/signup", FormData).then((response) => {
+            axios.post("https://coding-club-quiz-backend.vercel.app/signup", FormData).then((response) => {
 
             if (response.data.code == 200) {
                 toast.success(response.data.message, {
@@ -187,10 +196,20 @@ const SignupForm = ({ setIsLoggedIn }) => {
                         </span>
                     </label>
                 </div>
+                {/* <button className="text-white w-1/3  bg-emerald-900 mx-auto 
+                     hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-1 py-3  mb-1 mt-3 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800  overflow-hidden" type='sumbit' onClick={handelOTP}>Send OTP</button> */}
 
+                {/* {show && <input onChange={changeHandler} className='h-10 w-1/3 mx-auto mt-3 outline-none pl-4 rounded-md  mb-2 bg-gray-200' name='OTP' type='otp' placeholder='Enter OTP' value={FormData.OTP} />}
+
+                {show && <button className="text-white w-1/3  mx-auto  bg-green-500 hover:bg-blue-800 focus:ring-4 font-medium rounded-lg text-sm px-1 py-3  mb-1 mt-3   focus:outline-none dark:focus:ring-blue-800  overflow-hidden" type='sumbit' onClick={handelSignup}>SIGN UP</button>
+                } */}
+
+                {/* <button className="text-richblack-900 w-full bg-yellow-300 rounded-[8px] 
+                font-medium py-[8px] px-[12px] mt-6" >Create Account</button> */}
                 <button className="text-richblack-900 w-full bg-yellow-300 rounded-[8px] 
                 font-medium py-[8px] px-[12px] mt-6" >Create Account</button>
             </form>
+            <Link to='/Login' className='mt-3 overflow-hidden'> Already Register<span className='m-3 text-violet-800' >Sign in</span> </Link>
         </div>
     );
 }

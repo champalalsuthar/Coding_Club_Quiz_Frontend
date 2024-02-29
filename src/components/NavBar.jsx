@@ -37,7 +37,7 @@ const NavBar = (props) => {
         // console.log("Validating token on server");
 
         try {
-            const response = await fetch("http://localhost:5000/validateToken", {
+            const response = await fetch("https://coding-club-quiz-backend.vercel.app/validateToken", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

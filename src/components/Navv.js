@@ -4,18 +4,28 @@ import logo from '../Assets/CCCUHlogo.png'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import { setUserData } from '../Redux/dashboardSlice';
+import axios from "axios"
+
 
 const Navv = (props) => {
     const Navigate = useNavigate();
     let isLoggedIn = props.isLoggedIn;
     let setIsLoggedIn = props.setIsLoggedIn;
+    const dispatch = useDispatch();
+
     useEffect(() => {
-        // Check for stored token on page load
+        // Check for stored token on    page load
         const storedToken = window.localStorage.getItem('token');
         if (storedToken) {
             validateTokenOnServer(storedToken)
                 .then((response) => {
                     if (response.code === 200) {
+                        console.log(response);
+                        console.log(response.data);
+                        console.log(response.data._id);
+                        dispatch(setUserData(response.data));
                         setIsLoggedIn(true);
                     }
                 })
@@ -35,7 +45,7 @@ const Navv = (props) => {
     };
     const validateTokenOnServer = async (token) => {
         try {
-            // const response = await fetch("http://localhost:5000/validateToken", {
+            // const response = await fetch("https://coding-club-quiz-backend.vercel.app/validateToken", {
             const response = await fetch("https://coding-club-quiz-backend.vercel.app/validateToken", {
                 method: "POST",
                 headers: {
@@ -53,23 +63,22 @@ const Navv = (props) => {
         }
     };
 
-
     return (
 
         <div className="flex justify-between items-center 
         w-full py-4 h-28      lg:px-20 mx-auto bg-sky-500 fixed z-10">
             <a href="/">
-                <img src={logo} height={30} width={80} loading="lazy" />
+                <img src={logo} alt="ima" height={30} width={80} loading="lazy" />
             </a>
             {/* <link to="/">
                 <img src={logo} height={30} width={80} loading="lazy" />
             </link> */}
             <nav>
-                <ul className="flex font-bold lg:pl-20  gap-x-1 md:gap-x-4 lg:gap-x-6 text-white text-sm lg:text-2xl   ">
-                    <li >
-                        <NavLink to="/">Home</NavLink> </li>
-                    <li > <NavLink to="/quizes">Quizes</NavLink></li>
+                <ul className="flex font-bold flex-col md:flex-row    lg:pl-20  gap-x-1 md:gap-x-4 lg:gap-x-6 text-white lg:text-2xl md:text-xl">
+                    <li > <NavLink to="/">Home</NavLink> </li>
+                    <li > <NavLink to="/allquizes">Quizzes</NavLink></li>
                     {/* <li > <NavLink to="/createquiz">CreateQuiz</NavLink></li> */}
+                    <li > <NavLink to="/createquiz">CreateQuiz</NavLink></li>
                     <li > <NavLink to="/about">About</NavLink></li>
                 </ul>
             </nav>

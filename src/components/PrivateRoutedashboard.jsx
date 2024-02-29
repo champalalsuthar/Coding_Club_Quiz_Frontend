@@ -1,5 +1,7 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const PrivateRoute = ({ isLoggedIn, children }) => {
@@ -20,11 +22,15 @@ const PrivateRoute = ({ isLoggedIn, children }) => {
     //     }
     // }
     // const Navigate= useNavigate()
-    if(isLoggedIn){
+    if (isLoggedIn) {
+
         return children;
     }
-    else{
-        return <Navigate to="/login"/>
+    else {
+        toast.error("Please Login First", {
+            position: toast.POSITION.TOP_CENTER,
+        });
+        return <Navigate to="/login" />
     }
 
 }
