@@ -8,7 +8,7 @@ const About = () => {
       }
 
     return (
-        <div className="pt-28"> 
+        <div className=""> 
             <div className=" flex flex-col  lg:py-7  justify-center items-center w-2/3  mx-auto ">
                 <div className="text-center mx-auto lg:p-8 ">
 

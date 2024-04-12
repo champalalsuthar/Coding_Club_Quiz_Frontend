@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectUserData, setUserData } from '../Redux/dashboardSlice';
 import QuizForm from '../components/QuizForm';
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
@@ -6,6 +8,11 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const CreateQuiz = () => {
   const Navigate = useNavigate();
+  const userData = useSelector(selectUserData);
+  // const dispatch = useDispatch();
+
+
+  console.log(userData);
   // const [quizData, setQuizData] = useState({
   //   title: '',
   //   questions: [
@@ -22,6 +29,13 @@ const CreateQuiz = () => {
   // });
 
   const handleSaveQuiz = (data) => {
+
+    console.log(data);
+    const namefullname = userData.firstname + ' ' + userData.Lastname;
+    data.name = namefullname;
+    data.userId = userData._id;
+    console.log(data);
+    // fetch('http://localhost:5000/createquiz', {
     fetch('https://coding-club-quiz-backend.vercel.app/createquiz', {
       method: 'POST',
       headers: {
@@ -51,10 +65,12 @@ const CreateQuiz = () => {
         console.error('Error sending data:', error);
       });
   };
+  console.log("outer of create quiz");
 
   return (
-    <div className='mt-28 mx-auto w-full lg:w-1/2 bg-slate-300 p-6 rounded-lg'>
-      <QuizForm onSaveQuiz={handleSaveQuiz} />
+
+    <div className=' mx-auto w-full lg:w-1/2  rounded-lg'>
+      <QuizForm onSaveQuiz={handleSaveQuiz} userData={userData} />
     </div>
   );
 };

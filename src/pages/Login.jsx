@@ -7,7 +7,7 @@ import ContactUs from "../components/ContactUs";
 const Login = ({ setIsLoggedIn }) => {
 
     return (
-        <div className="pt-28 bg-white ">
+        <div className=" bg-white ">
             <div> <Templat
                 title="Welcome Back"
                 desc1="Build skills for today,tomorrow,and beyond."

@@ -2,7 +2,7 @@ import { FaHome } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 const ErrorPage = () => {
     return (
-        <div className="pt-28">
+        <div className="">
             <div className="p-9 text-center" >
                 <div>
                     <h2 className="text-6xl">404 ERROR..!!</h2>

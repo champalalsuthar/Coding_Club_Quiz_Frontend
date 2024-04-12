@@ -21,19 +21,23 @@ const Profile = () => {
 
 
   return (
-    <div className="py-20  mx-auto text-center  min-h-136 bg-gray-200  ">
-      <div className="lg:flex mx-auto min-h-96  p-5  text-center">
-        <img src={profilepic} alt="prfile" className=" w-1/2  h-w/2  md:p-28  mx-auto rounded-full" />
+
+    <div className="lg:h-[450px]  mx-auto text-center bg-gray-200  ">
+      <div className="lg:flex h-full mx-auto p-5 text-center">
+        <img src={profilepic} alt="prfile" className=" mx-auto rounded-full" />
         <div className="">
-          <h1 className="mt-20 ">
-            <strong className="text-teal-500  text-2xl px-16 font-extrabold italic">
+          <h1 className=" w-full h-full flex flex-col justify-center items-center text-center">
+            <strong className="text-teal-500 mx-4 text-2xl font-extrabold italic">
               Sweat more in practice, bleed less in war.
             </strong>
-            <br /> <p className="  mt-2 font-bold">– Spartan Warrior Credo</p>
+            <br />
+            <p className=" font-bold">– Spartan Warrior Credo</p>
+            <br></br>
+            <h1 className=" m-4 text-2xl text-sky-600 ">
+              <span className="font-bold text-black">Welcome! 👋</span> <p>{userData.firstname} {userData.Lastname}</p>
+            </h1>
           </h1>
-          <h1 className="mx-auto mt-32 text-2xl text-sky-600 ">
-            <span className="font-bold text-black">Welcome! 👋</span> <p>{userData.firstname} {userData.Lastname}</p>
-          </h1>
+
         </div>
       </div>
       <div className=" absolute right-22 top-44">

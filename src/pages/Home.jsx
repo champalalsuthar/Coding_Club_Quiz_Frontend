@@ -8,7 +8,7 @@ const Home = (isLoggedIn) => {
 
     return (
         <>
-            <div className="pt-28 flex flex-col justify-center
+            <div className=" flex flex-col justify-center
         text-4xl p bg-white overflow-hidden ">
             </div>
             <HeroSection />

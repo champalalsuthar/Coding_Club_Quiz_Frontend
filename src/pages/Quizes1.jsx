@@ -15,12 +15,13 @@ const Quizes1 = () => {
     const changeGO = (quiz) => {
         console.log(quiz);
         // NAVIGATE(`/allquizes/${quizId}`, { state: { data: quiz } });
-        NAVIGATE(`/allquizes/${quiz._Id}`, { state: { data: quiz } });
+        NAVIGATE(`/allquizes/${quiz._id}`, { state: { data: quiz } });
     }
 
     useEffect(() => {
         const fetchData = async () => {
             try {
+                // const response = await axios.post("http://localhost:5000/allquizes");
                 const response = await axios.post("https://coding-club-quiz-backend.vercel.app/allquizes");
                 const data = response.data;
                 console.log(data);
@@ -32,34 +33,54 @@ const Quizes1 = () => {
         };
         fetchData();
     }, []);
+    // if (!data) {
+    //     return <div>Loading...</div>; // or handle the loading state as needed
+    // }
     return (
-        <div className='pt-28 overflow-hidden  bg-slate-200 '>
-            <div className='overflow-hidden '>
-                <div className='w-full bg-slate-200'>
-                    <h2 className='text-center text-black font-bold text-3xl p-5 underline'> Available Quizzes ({data.length})</h2>
-                    <div className='  grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-8 m-4'>
-                        {data.map((quiz) => (
-                            <div key={quiz._id} className='  '>
-                                <div className=" bg-blue-100 text-center  p-8 rounded-md shadow-md transform hover:scale-105 transition-transform duration-300 ease-in-out">
-                                    <h1 className="text-xl text-red-500 font-bold m-2 uppercase">{quiz.title}'s Quiz</h1>
-                                    <img src={Quizlogo} alt="Kitten" className="w-full h-full mb-4 rounded-md shadow-md" />
-                                    <p className="mb-4">No. of Questions = {quiz.Questions.length}</p>
-                                    <button onClick={() => changeGO(quiz)} className="hover:bg-indigo-500 text-white py-2 px-4 rounded bg-green-600 transition duration-300 m-4">
-                                        Attempt Quiz
-                                    </button>
-                                    <p>quiz created by : {quiz.userfullname}</p>
-                                    {/* <p>quiz created by : {quiz.userid}</p> */}
-                                    {/* <p>quiz time created : {quiz.createdAt}</p> */}
-                                </div>
-                            </div>
-                        ))}
-                    </div>
+        <div className='overflow-hidden  bg-slate-200'>
+            {!data ? (
+                <div className='h-64 w-screen flex justify-center items-center '>
+                    <div className="loader"></div>
                 </div>
-            </div>
-            <Footer />
+            ) :
+                (
+                    <div className='overflow-hidden  bg-slate-200 '>
+                        {/* {data ?( */}
+                        <div className='overflow-hidden '>
+                            <div className='w-full bg-slate-200'>
+                                <h2 className='text-center text-black font-bold text-3xl p-5 underline'> Available Quizzes ({data.length})</h2>
+                                {/* {!data ? (
+                                    <div className='h-64 w-full flex justify-center items-center '>
+                                        <div className="loader"></div>
+                                    </div>
+                                ) :
+                                    ( */}
+                                <div className='  grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-8 m-4'>
+                                    {data.map((quiz) => (
+                                        <div key={quiz._id} className='  '>
+                                            <div className=" bg-blue-100 text-center  p-8 rounded-md shadow-md transform hover:scale-105 transition-transform duration-300 ease-in-out">
+                                                <h1 className="text-xl text-red-500 font-bold m-2 uppercase">{quiz.title}'s Quiz</h1>
+                                                <img src={Quizlogo} alt="Kitten" className="w-full h-full mb-4 rounded-md shadow-md" />
+                                                <p className="mb-4">No. of Questions = {quiz.Questions.length}</p>
+                                                <button onClick={() => changeGO(quiz)} className="hover:bg-indigo-500 text-white py-2 px-4 rounded bg-green-600 transition duration-300 m-4">
+                                                    Attempt Quiz
+                                                </button>
+                                                <p>quiz created by : {quiz.userfullname}</p>
+                                                {/* <p>quiz created by : {quiz.userid}</p> */}
+                                                {/* <p>quiz time created : {quiz.createdAt}</p> */}
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                                {/* )} */}
+                            </div>
+                        </div>
+                        {/* ) : (<div className='h-34 w-screen bg-red-700'>loading...... </div>)} */}
+                        <Footer />
+                    </div>
+                )}
+
         </div>
-
-
 
     )
 }

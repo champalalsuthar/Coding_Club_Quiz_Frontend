@@ -57,10 +57,7 @@ function App() {
         </Route>
         {/* <Route path='/htmlquiz' element={<HtmlQuiz />}></Route> */}
 
-        <Route path='/createquiz' element={
-          <PrivateRoute isLoggedIn={isLoggedIn} >
-            <CreateQuiz setIsLoggedIn={setIsLoggedIn} />
-          </PrivateRoute>}></Route>
+
         <Route path='/allquizes' element={<Quizes1 />}></Route>
         {/* <Route path="/allquizes/:id" element={<QuizDetails />} /> */}
         <Route path='/allquizes/:id' element={
@@ -87,6 +84,13 @@ function App() {
           <PrivateRoutelogin isLoggedIn={isLoggedIn} >
             <Signup setIsLoggedIn={setIsLoggedIn} />
           </PrivateRoutelogin>}>
+        </Route>
+
+        <Route path='/createquiz' element={
+          // <PrivateRoute isLoggedIn={isLoggedIn} >
+          <CreateQuiz setIsLoggedIn={setIsLoggedIn} />
+          // </PrivateRoute>
+        }>
         </Route>
         <Route path='/dashboard' element={
           <PrivateRoute isLoggedIn={isLoggedIn} >

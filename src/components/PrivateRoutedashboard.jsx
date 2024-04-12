@@ -23,13 +23,12 @@ const PrivateRoute = ({ isLoggedIn, children }) => {
     // }
     // const Navigate= useNavigate()
     if (isLoggedIn) {
-
         return children;
     }
     else {
-        toast.error("Please Login First", {
-            position: toast.POSITION.TOP_CENTER,
-        });
+        // toast.error("Please Login First", {
+        //     position: toast.POSITION.TOP_CENTER,
+        // });
         return <Navigate to="/login" />
     }
 

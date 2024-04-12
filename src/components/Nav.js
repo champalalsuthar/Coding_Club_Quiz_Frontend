@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { ImCross } from "react-icons/im";
 import { FaHome } from "react-icons/fa";
-import logo from '../Assets/CCCUHlogo.png'
+import logo from '../Assets/CCCUHlogoH.png'
 function Nav(props) {
     const [click, setClick] = useState(false);
     const handleClick = () => setClick(!click);

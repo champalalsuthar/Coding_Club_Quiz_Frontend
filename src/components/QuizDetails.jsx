@@ -17,36 +17,61 @@ const QuizDetails = () => {
     const [score, setScore] = useState(0);
     const [showResult, setShowResult] = useState(false);
     const [clickedOption, setClickedOption] = useState(0);
+    const [leaderboarData, setLeaderboardData]=useState();
 
     const userData = useSelector(selectUserData);
     console.log(userData);
-    console.log(userData._id);
+    // console.log(userData._id);
+    const showleadershow = async () => {
+        try {
+            // const response = await axios.post('http://localhost:5000/leaderboard', { quizid: data._id });
+            const response = await axios.post('https://coding-club-quiz-backend.vercel.app/leaderboard', { quizid: data._id });
+            setLeaderboardData(response.data);
+            console.log(response.data);
+            setShowResult(true);
+        } catch (error) {
+            console.error('Error fetching user results:', error);
+        }
+    };
+    
 
 
 
     const changeNextQuestion = async () => {
         updateScore();
-
         if (currentQuestion < data.Questions.length - 1) {
+            console.log("if of CNQ" + score);
             setCurrentQuestion(currentQuestion + 1);
             setClickedOption(0);
         } else {
-            setShowResult(true);
-
+            console.log("else 1 of CNQ" + score);
             const userId =userData._id;
             const quizTitle = data.title;
+            const quizid=data._id;
+            const username=userData.firstname;
+            // console.log("quiz id");
+            // console.log(quizid);
+            // console.log("user id");
+            // console.log(userId);
+            console.log("else 2 of CNQ" + score);
             const numberOfQuestions = data.Questions.length;
 
             try {
+                // const response = await axios.post('http://localhost:5000/saveUserResult', {
                 const response = await axios.post('https://coding-club-quiz-backend.vercel.app/saveUserResult', {
                     userId,
+                    quizid,
+                    username,
                     quizTitle,
                     score,
                     numberOfQuestions,
                 }, { withCredentials: true });
+                console.log("try if  of CNQ" + score);
 
                 if (response.status === 200) {
+                    console.log("try if 200 of CNQ" + score);
                     console.log('User result saved successfully');
+                    showleadershow();
                 } else {
                     console.error('Failed to save user result');
                 }
@@ -76,10 +101,10 @@ const QuizDetails = () => {
     }
 
     return (
-        <div className="w-full lg:w-1/2 pt-28 m-auto p-6 bg-white rounded-md shadow-lg">
+        <div className="w-full lg:w-2/3 m-auto p-6 bg-white rounded-md shadow-lg">
             <div className="">
                 {(showResult) ? (
-                    <Result score={score} totalScore={data.Questions.length} tryAgain={resetAll} />
+                    <Result score={score} totalScore={data.Questions.length} leaderboarData={leaderboarData} quizid={data._id}  userData={userData._id} tryAgain={resetAll} />
                 ) : (
                     <>
                         <h1 className='text-center text-red-500 underline text-2xl font-bold mb-4'>{data.title}'s Quiz</h1>
