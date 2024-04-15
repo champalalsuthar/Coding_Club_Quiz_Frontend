@@ -10,6 +10,7 @@ import Footer from '../components/Footer';
 
 const Quizes1 = () => {
     const [data, setData] = useState([]);
+    const [loading, setLoading] = useState(true);
     const NAVIGATE = useNavigate();
 
     const changeGO = (quiz) => {
@@ -26,6 +27,7 @@ const Quizes1 = () => {
                 const data = response.data;
                 console.log(data);
                 setData(data);
+                setLoading(false);
             }
             catch (error) {
                 console.error("Error validating token:", error);
@@ -38,8 +40,8 @@ const Quizes1 = () => {
     // }
     return (
         <div className='overflow-hidden  bg-slate-200'>
-            {!data ? (
-                <div className='h-64 w-screen flex justify-center items-center '>
+            {loading ? (
+                <div className=' my-52  w-screen flex justify-center items-center '>
                     <div className="loader"></div>
                 </div>
             ) :
