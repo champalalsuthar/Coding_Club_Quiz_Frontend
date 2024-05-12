@@ -21,14 +21,14 @@ const Team = () => {
                             className="no-underline block"
                             target="_blank"
                         >
-                            <FaLinkedin  className="h-8 w-8 mt-2 "/>
+                            <FaLinkedin className="h-8 w-8 mt-2 " />
                         </a>
                         <a
                             href="https://github.com/champalalsuthar"
                             className="no-underline block"
                             target="_blank"
                         >
-                            < FaGithub className="h-8 w-8 mt-2 "/>
+                            < FaGithub className="h-8 w-8 mt-2 " />
                         </a>
 
                     </div>
@@ -44,14 +44,14 @@ const Team = () => {
                             className="no-underline  block "
                             target="_blank"
                         >
-                            <FaLinkedin  className="h-8 w-8 mt-2 "/>
+                            <FaLinkedin className="h-8 w-8 mt-2 " />
                         </a>
                         <a
                             href="https://github.com/pushpendrasingh001"
                             className="no-underline  block "
                             target="_blank"
                         >
-                            < FaGithub  className="h-8 w-8 mt-2 "/>
+                            < FaGithub className="h-8 w-8 mt-2 " />
                         </a>
                     </div>
                 </div>

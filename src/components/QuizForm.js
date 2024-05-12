@@ -79,7 +79,7 @@ const QuizForm = ({ onSaveQuiz, userData }) => {
       {!userData ? (
         <div className='w-full h-full flex justify-center items-center flex-col gap-2'>
           <div className="loader "></div>
-          <p>If you are not logged in, please log in first. </p>
+          <p>If you are not logged in, please log in first.</p>
           <p>Otherwise, please wait for the data to load.</p>
         </div>
       ) :
@@ -132,6 +132,7 @@ const QuizForm = ({ onSaveQuiz, userData }) => {
                     Answer:
                     <input className='p-[5px] m-1 rounded-md text-lg text-black'
                       type="text"
+                      placeholder='write any one from 1,2,3,4'
                       name="correctAnswer"
                       value={question.correctAnswer}
                       onChange={(e) => handleInputChange(e, index)}

@@ -11,8 +11,7 @@ import { toHaveStyle } from "@testing-library/jest-dom/matchers";
 
 
 
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import toast from 'react-hot-toast';
 
 const DashBoard = ({ setIsLoggedIn }) => {
     const [userResult, setUserResult] = useState("");
@@ -21,8 +20,6 @@ const DashBoard = ({ setIsLoggedIn }) => {
 
     const userData = useSelector(selectUserData);
     // const dispatch = useDispatch();
-
-
     console.log(userData);
     // console.log(userData._id);
     console.log(userQuizzes);
@@ -73,9 +70,7 @@ const DashBoard = ({ setIsLoggedIn }) => {
     console.log(userQuizzes);
     console.log(userResult);
     const handleEdit = async (quizId) => {
-        toast.error("Server Busy...!", {
-            position: toast.POSITION.TOP_CENTER,
-        });
+        toast.error("Server Busy...!");
     }
 
     const handleDelete = async (deletequizId) => {
@@ -107,7 +102,14 @@ const DashBoard = ({ setIsLoggedIn }) => {
                         <div className="overflow-x-auto text-center ">
                             <p className="text-4xl font-semibold text-red-400 underline m-5 ">Quiz Attempt Results Overview</p>
                             <table className="min-w-full bg-white border border-gray-300">
-                                <thead className="text-xl">
+                                <thead className=
+
+
+
+
+
+
+                                    "text-xl">
                                     <tr>
                                         <th className="py-2 px-4 border-b">Quiz Title</th>
                                         <th className="py-2 px-4 border-b">Score</th>

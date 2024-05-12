@@ -25,7 +25,7 @@ const Footer = () => {
               quiz
             </h3>
             <Link
-              to="/quizes"
+              to="/allquizes"
               className="no-underline text-white text-xs block xl:text-sm"
             >
               All Quiz
@@ -57,7 +57,7 @@ const Footer = () => {
                 style={{ marginRight: "2px" }}
               ></i>
               <span className="text-white text-xs xl:text-sm">
-              codingclub@cuh.ac.in
+                codingclub@cuh.ac.in
               </span>
             </p>
             <p className="flex items-center my-1">

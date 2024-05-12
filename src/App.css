@@ -1,23 +1,22 @@
-
-
- .active
-{
+.active {
   color: blue;
 }
 
-*{
-  margin:0;
-  padding:0;
+* {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
-body{
-  align-items: center; 
-   justify-content: center;     
-   /* background-image: linear-gradient(rgb(245, 236, 245),rgb(116, 80, 116));  */
+
+body {
+  align-items: center;
+  justify-content: center;
+  /* background-image: linear-gradient(rgb(245, 236, 245),rgb(116, 80, 116));  */
   /* background-color: #ffffff; */
   min-height: 100vh;
- 
-} 
+
+}
+
 /* @media screen and (max-width: 1024px) {
   body {
     display: flex; width: 200%;
@@ -25,9 +24,9 @@ body{
   }
 } */
 
-input{
-border:none;
-outline: none;
+input {
+  border: none;
+  outline: none;
 }
 
 .container {
@@ -39,53 +38,58 @@ outline: none;
   background-color: white;
   border-radius: 15px;
   /* box-shadow: 2px 2px 10px 1px rgb(102, 3, 102); */
-  box-shadow: 2px 2px 10px 1px #333;  
+  box-shadow: 2px 2px 10px 1px #333;
   overflow: hidden;
   padding: 10px;
   /* position: relative; */
 }
-.heading-txt{
-  color:white;
+
+.heading-txt {
+  color: white;
   /* color:#276272; */
   font-size: 30px;
   font-weight: bold;
   margin: 10px;
-  text-align: center;  
+  text-align: center;
   text-transform: uppercase;
 }
-.question{
-  margin:8px;
+
+.question {
+  margin: 8px;
   /* box-shadow: 0px 0px 10px 1px #a2a3a3; */
   box-shadow: 0px 0px 4px 1px rgb(128, 123, 123);
   border-radius: 5px;
-  padding:5px;
+  padding: 5px;
   font-size: large;
   font-weight: 600;
   font-family: 'Times New Roman', Times, serif;
   min-width: 100%;
   min-height: 90px;
   display: flex;
-padding-top: 1rem;
-padding-left: 1rem;
+  padding-top: 1rem;
+  padding-left: 1rem;
 }
-#question-number{
+
+#question-number {
   margin-right: 5px;
 }
-.option-container{
+
+.option-container {
   display: flex;
   flex-direction: column;
-  margin:6px 4px;    
+  margin: 6px 4px;
   width: 100%;
   padding: 10px;
 }
+
 /* .option-container input{
   visibility: hidden;    
 } */
-.option-btn{
+.option-btn {
   box-shadow: 0px 0px 4px 1px rgb(128, 123, 123);
   padding: 5px;
   border-radius: 3px;
-  border:none;
+  border: none;
   outline: none;
   transition: 0.3s;
   margin: 5px;
@@ -93,58 +97,63 @@ padding-left: 1rem;
   background-color: white;
 }
 
-.checked{
+.checked {
   background-color: rgb(179, 83, 179);
-  color:white;
+  color: white;
   box-shadow: 3px 3px 4px 1px rgb(78, 69, 78);
 }
-.option-btn:hover{
+
+.option-btn:hover {
   background-color: rgb(118, 212, 152);
-  color:white;
+  color: white;
 }
-#next-button,#prev-button{
-  padding:10px;
-  border:none;
+
+#next-button,
+#prev-button {
+  padding: 10px;
+  border: none;
   text-align: center;
   background-color: rgb(3, 251, 160);
   /* background-color: #276272; */
-  color:white;
+  color: white;
   border-radius: 5px;
   box-shadow: 3px 3px 2px 1px rgb(127, 109, 109);
   font-size: larger;
   font-weight: bold;
-  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   transition: 0.2s;
-  width:100px;
-  /* position: absolute; */
-  bottom: 15px;
-  cursor: pointer;
-}
-#submit-button{
-  padding:10px;
-  border:none;
-  text-align: center;
-  background-color: rgb(251, 3, 3);
-  /* background-color: #276272; */
-  color:white;
-  border-radius: 5px;
-  box-shadow: 3px 3px 2px 1px rgb(127, 109, 109);
-  font-size: larger;
-  font-weight: bold;
-  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  transition: 0.2s;
-  width:100px;
+  width: 100px;
   /* position: absolute; */
   bottom: 15px;
   cursor: pointer;
 }
 
-#next-button:active{
-  box-shadow:none;    
+#submit-button {
+  padding: 10px;
+  border: none;
+  text-align: center;
+  background-color: rgb(251, 3, 3);
+  /* background-color: #276272; */
+  color: white;
+  border-radius: 5px;
+  box-shadow: 3px 3px 2px 1px rgb(127, 109, 109);
+  font-size: larger;
+  font-weight: bold;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  transition: 0.2s;
+  width: 100px;
+  /* position: absolute; */
+  bottom: 15px;
+  cursor: pointer;
 }
-.show-score{
+
+#next-button:active {
+  box-shadow: none;
+}
+
+.show-score {
   position: absolute;
-  top:30%;
+  top: 30%;
   font-size: 40px;
-  text-align: center;  
+  text-align: center;
 }

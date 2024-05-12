@@ -18,6 +18,11 @@ const Quizes1 = () => {
         // NAVIGATE(`/allquizes/${quizId}`, { state: { data: quiz } });
         NAVIGATE(`/allquizes/${quiz._id}`, { state: { data: quiz } });
     }
+    const changeGO2 = (quiz) => {
+        console.log(quiz);
+        // NAVIGATE(`/allquizes/${quizId}`, { state: { data: quiz } });
+        NAVIGATE(`/allquizes/showleaderboard/${quiz._id}`, { state: { data: quiz } });
+    }
 
     useEffect(() => {
         const fetchData = async () => {
@@ -64,9 +69,12 @@ const Quizes1 = () => {
                                                 <h1 className="text-xl text-red-500 font-bold m-2 uppercase">{quiz.title}'s Quiz</h1>
                                                 <img src={Quizlogo} alt="Kitten" className="w-full h-full mb-4 rounded-md shadow-md" />
                                                 <p className="mb-4">No. of Questions = {quiz.Questions.length}</p>
-                                                <button onClick={() => changeGO(quiz)} className="hover:bg-indigo-500 text-white py-2 px-4 rounded bg-green-600 transition duration-300 m-4">
+                                                <button onClick={() => changeGO2(quiz)} className="hover:bg-indigo-500 text-white py-1 px-2 rounded bg-green-600 transition duration-300 m-2">
                                                     Attempt Quiz
                                                 </button>
+                                                {/* <button onClick={() => changeGO2(quiz)} className="hover:bg-indigo-500 text-white py-1 px-2 rounded bg-violet-500 transition duration-300 m-2">
+                                                    View LeaderBoard
+                                                </button> */}
                                                 <p>quiz created by : {quiz.userfullname}</p>
                                                 {/* <p>quiz created by : {quiz.userid}</p> */}
                                                 {/* <p>quiz time created : {quiz.createdAt}</p> */}

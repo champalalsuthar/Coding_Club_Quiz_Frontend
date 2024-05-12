@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import logo from '../Assets/CCCUHlogoH.png'
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+// import { toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import { setUserData } from '../Redux/dashboardSlice';
 import axios from "axios"
+import toast from 'react-hot-toast';
 import './Navv.css';
 
 import { FaBars, FaTimes } from 'react-icons/fa';
-
 
 const Navv = (props) => {
 
@@ -19,7 +19,7 @@ const Navv = (props) => {
     let setIsLoggedIn = props.setIsLoggedIn;
     const dispatch = useDispatch();
     const [isOpen, setIsOpen] = React.useState(false);
-
+    // const notify = () => ;
     useEffect(() => {
         const storedToken = window.localStorage.getItem('token');
         if (storedToken) {
@@ -42,9 +42,7 @@ const Navv = (props) => {
     const handleLogout = () => {
         setIsLoggedIn(false);
         window.localStorage.removeItem('token');
-        toast.success("Logged Out", {
-            position: toast.POSITION.TOP_CENTER,
-        });
+        toast.success('Logged Out');
         Navigate("/");
     };
     const validateTokenOnServer = async (token) => {
@@ -164,98 +162,6 @@ const Navv = (props) => {
             </div>
         </div>
 
-
-        // <div className="Nav">
-        //     <div className="NavbarContainer">
-        //         {/* <ToggleButton onClick={themeChange}>
-        //             {darkMode ? <MdLightMode /> :
-        //                 <FontAwesomeIcon icon={faMoon} />}
-        //         </ToggleButton> */}
-        //         <div className="NavLogo" to='/'>
-        //             <a style={{ display: "flex", alignItems: "center", color: "white", marginBottom: '20;', cursor: 'pointer' }}>
-        //                 {/* <DiCssdeck size="3rem" /> */}
-        //                 <Span>Champa Lal Suthar</Span>
-        //             </a>
-        //         </div>
-        //         <div className="MobileIcon">
-        //             {isOpen ? (
-        //                 <FaTimes onClick={() => setIsOpen(!isOpen)} />
-        //             ) : (
-        //                 <FaBars onClick={() => setIsOpen(!isOpen)} />
-        //             )}
-        //         </div>
-        //         <div className="NavItems">
-        //             <NavLink href="#about">About</NavLink>
-        //             <NavLink href='#skills'>Skills</NavLink>
-        //             {/* <NavLink href='#experience'>Experience</NavLink> */}
-        //             <NavLink href='#projects'>Projects</NavLink>
-        //             <NavLink href='#education'>Education</NavLink>
-        //         </div>
-        //         <div className="ButtonContaine" r>
-        //             <GitHubButton href={Bio.github} target="_blank">Github</GitHubButton>
-        //             <LinkedinButton href={Bio.linkedin} target="_blank">Linkedin</LinkedinButton>
-        //         </div>
-        //         {
-        //             isOpen &&
-        //             <div className="MobileMenu" isOpen={isOpen}>
-        //                 <div className="MobileLink" href="#about" onClick={() => {
-        //                     setIsOpen(!isOpen)
-        //                 }}>About</div>
-        //                 <div className="MobileLink" href='#skills' onClick={() => {
-        //                     setIsOpen(!isOpen)
-        //                 }}>Skills</div>
-        //                 <div className="MobileLink href='#projects' onClick={() => {
-        //                     setIsOpen(!isOpen)
-        //                 }}>Projects</div>
-        //                 <div className="MobileLink href='#education' onClick={() => {
-        //                         setIsOpen(!isOpen)
-        //                     }}>Education</div>
-        //                 <div className="GitHubButton" style={{ padding: '10px 16px', color: 'white', width: 'max-content' }} target="_blank">Github</div>
-        //                 <div className="LinkedinButton" style={{ padding: '10px 16px', color: 'white', width: 'max-content' }} target="_blank">Linkedin</div>
-        //             </div>
-        //         }
-        //     </div>
-        // </div>
-
-        // <div className="flex justify-between items-center 
-        // w-full py-4 h-28 lg:px-20 mx-auto bg-sky-500 fixed z-10">
-        //     <a href="/">
-        //         <img src={logo} alt="ima" height={30} width={80} loading="lazy" />
-        //     </a>
-        //     {/* <link to="/">
-        //         <img src={logo} height={30} width={80} loading="lazy" />
-        //     </link> */}
-        //     <nav>
-        //         <ul className="flex font-bold flex-col md:flex-row    lg:pl-20  gap-x-1 md:gap-x-4 lg:gap-x-6 text-white lg:text-2xl md:text-xl">
-        //             <li > <NavLink to="/">Home</NavLink> </li>
-        //             <li > <NavLink to="/allquizes">Quizzes</NavLink></li>
-        //             {/* <li > <NavLink to="/createquiz">CreateQuiz</NavLink></li> */}
-        //             <li > <NavLink to="/createquiz">CreateQuiz</NavLink></li>
-        //             <li > <NavLink to="/about">About</NavLink></li>
-        //         </ul>
-        //     </nav>
-        //     <div className="flex  gap-x-2 items-center text-xs md:text-sm lg:text-xl     ">
-        //         {!isLoggedIn && <Link to="/login"> <button
-        //             className="bg-green-500 text-white py-[8px]
-        //          px-[12px] rounded-[8px] m-1 lg:m-2 border border-richblack-700">
-        //             Login</button></Link>}
-        //         {!isLoggedIn && <Link to="/signup"> <button
-        //             className="bg-green-500 text-white py-[8px]
-        //          px-[12px] rounded-[8px] m-1 lg:m-2 md:m-2 border border-richblack-700" >
-        //             Signup</button></Link>}
-        //         {isLoggedIn && <Link to="/Dashboard"> <button
-        //             className="bg-green-500 text-white py-[8px]
-        //          px-[12px] rounded-[8px]  m-1 lg:m-2 md:m-2 border border-richblack-700">
-        //             Dashboard</button></Link>}
-        //         {isLoggedIn && <Link to="/"> <button
-        //             className="bg-green-500 text-white py-[8px]
-        //          px-[12px] rounded-[8px] m-1 lg:m-2 md:m-2 border border-richblack-700"
-        //             // onClick={() => (setIsLoggedIn(false),
-        //             //     toast.success("Logged Out"))}
-        //             onClick={handleLogout}
-        //         > LogOut</button></Link>}
-        //     </div>
-        // </div>
     );
 }
 export default Navv;

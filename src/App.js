@@ -9,24 +9,22 @@ import DashBoard from './pages/DashBoard'
 import { useState, useEffect, createContext } from 'react';
 import PrivateRoute from './components/PrivateRoutedashboard';
 import Quizes from './pages/Quizes';
-import HtmlQuiz from './QuizData/HtmlQuiz';
-import CssQuiz from './QuizData/CssQuiz';
+
 import Result from './pages/Result';
 import ContactPage from './pages/About';
-import ReactQuiz from './QuizData/ReactQuiz';
-import MongodbQuiz from './QuizData/MongodbQuiz';
-import NodejsQuiz from './QuizData/NodejsQuiz';
-import JsQuiz from './QuizData/JsQuiz';
+
 import PrivateRoutelogin from './components/PrivateRoutelogin';
 import ErrorPage from './pages/ErrorPage';
-import Nav from './components/Nav';
 // import NavBar from './components/NavBar';
 import Navv from './components/Navv';
 import Quizes1 from './pages/Quizes1';
 import { ImOffice } from 'react-icons/im';
-import QuizDetail from './components/QuizDetail';
 import CreateQuiz from './pages/CreateQuiz';
 import QuizDetails from './components/QuizDetails';
+import UserProfile from './components/UserProfile';
+import ShowLeaderboard from './components/ShowLeaderboard';
+import Nav1 from './components/Nav1'
+import Home_Web from './components/firstpart/Home_Web';
 
 
 
@@ -34,6 +32,7 @@ import QuizDetails from './components/QuizDetails';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // const [showmainnav, setShowMainNav] = useState(true);
   const [userData, setUserData] = useState();
   useEffect(() => {
     const token = window.localStorage.getItem('token');
@@ -44,19 +43,26 @@ function App() {
   }, []);
   return (
     // <globalinfo.Provider value={userData}>
+
     <div className="w-full min-h-screen flex flex-col ">
-      {/* <Nav isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} /> */}
+      {/* {showmainnav ? */}
+      {/* <Nav1 showmainnav={showmainnav} setShowMainNav={setShowMainNav} ></Nav1> : */}
       <Navv isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+      {/* } */}
+      {/* <div className="w-full min-h-screen flex flex-col">
+        {showmainnav ? (
+          <Route path="/" exact>
+            <Nav1 showmainnav={showmainnav} setShowMainNav={setShowMainNav} />
+          </Route>
+        ) : (
+          <Navv isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+        )}
+      </div> */}
+      {/* </Router> */}
       <Routes className="">
+        {/* <Route path='/' element={<Home_Web isLoggedIn={isLoggedIn}></Home_Web>}></Route > */}
         <Route path='/' element={<Home isLoggedIn={isLoggedIn}></Home>}></Route >
         <Route path='/quizes' element={<Quizes />}></Route>
-        <Route path='/htmlquiz' element={
-          <PrivateRoute isLoggedIn={isLoggedIn} >
-            <HtmlQuiz />
-          </PrivateRoute>}>
-        </Route>
-        {/* <Route path='/htmlquiz' element={<HtmlQuiz />}></Route> */}
-
 
         <Route path='/allquizes' element={<Quizes1 />}></Route>
         {/* <Route path="/allquizes/:id" element={<QuizDetails />} /> */}
@@ -64,11 +70,9 @@ function App() {
           <PrivateRoute isLoggedIn={isLoggedIn} >
             <QuizDetails setIsLoggedIn={setIsLoggedIn} />
           </PrivateRoute>}></Route>
-        <Route path='/cssquiz' element={<CssQuiz />}></Route>
-        <Route path='/jsquiz' element={<JsQuiz />}></Route>
-        <Route path='/raectquiz' element={<ReactQuiz />}></Route>
-        <Route path='/mongodbquiz' element={<MongodbQuiz />}></Route>
-        <Route path='/nodejsquiz' element={<NodejsQuiz />}></Route>
+        <Route path='/allquizes/showleaderboard/:id' element={<ShowLeaderboard />}></Route>
+        <Route path='/userprofile/:id' element={<UserProfile />}></Route>
+
 
         <Route path='/result' element={<Result />}></Route>
         <Route path='/About' element={<About />}></Route>
@@ -99,7 +103,7 @@ function App() {
         </Route>
         <Route path='*' element={<ErrorPage />}></Route>
       </Routes>
-    </div>
+    </div >
     // </globalinfo.Provider>
   );
 }

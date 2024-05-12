@@ -3,11 +3,10 @@ import React, { useState, useEffect } from "react";
 import axios from "axios"
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch } from 'react-redux';
 import { setUserData } from '../Redux/dashboardSlice';
 import userEvent from "@testing-library/user-event";
+import toast from 'react-hot-toast';
 
 const LoginForm = ({ setIsLoggedIn }) => {
     const Navigate = useNavigate();
@@ -29,9 +28,8 @@ const LoginForm = ({ setIsLoggedIn }) => {
         event.preventDefault();
 
         if (FormData.password.length < 6) {
-            toast.error("password must be 6 characters!", {
-                position: "top-center"
-            });
+            // toast.error("hi");
+            toast.error("password must be 6 characters!");
             return;
         }
 
@@ -48,20 +46,14 @@ const LoginForm = ({ setIsLoggedIn }) => {
                     console.log(user2.result.firstname);
                     console.log(user2);
                     dispatch(setUserData(user2.result));
-                    toast.success(response.data.message, {
-                        position: toast.POSITION.TOP_CENTER,
-                    });
+                    toast.success(response.data.message);
                     window.localStorage.setItem("token", response.data.token);
                     setIsLoggedIn(true);
                     Navigate('/dashboard');
                 } else if (response.data.code === 300) {
-                    toast.error(response.data.message, {
-                        position: toast.POSITION.TOP_CENTER,
-                    });
+                    toast.error("Invalid Credentials");
                 } else {
-                    toast.error(response.data.message, {
-                        position: toast.POSITION.TOP_CENTER,
-                    });
+                    toast.error(response.data.message);
                     Navigate("/signup");
                 }
             })

@@ -3,8 +3,7 @@ import axios from "axios";
 import { useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import toast from 'react-hot-toast';
 
 
 const SignupForm = ({ setIsLoggedIn }) => {
@@ -38,21 +37,15 @@ const SignupForm = ({ setIsLoggedIn }) => {
         event.preventDefault();
 
         if (FormData.password.length < 6) {
-            toast.error("password must be 6 char!", {
-                position: "top-center"
-            });
+            toast.error("password must be 6 char!");
             return;
         }
         if (FormData.confirmFassword.length < 6) {
-            toast.error("confirm password must be 6 char!", {
-                position: "top-center"
-            });
+            toast.error("confirm password must be 6 char!");
             return;
         }
         if (FormData.password != FormData.confirmFassword) {
-            toast.error("password and confirm password not same", {
-                position: "top-center"
-            });
+            toast.error("password and confirm password not same");
             // alert("password and confirm password not same");
             return;
         }
@@ -67,16 +60,12 @@ const SignupForm = ({ setIsLoggedIn }) => {
         axios.post("https://coding-club-quiz-backend.vercel.app/signup", FormData).then((response) => {
 
             if (response.data.code == 200) {
-                toast.success(response.data.message, {
-                    position: toast.POSITION.TOP_CENTER,
-                });
+                toast.success(response.data.message);
                 // alert(response.data.message)
                 Navigate("/login");
             }
             else {
-                toast.error(response.data.message, {
-                    position: toast.POSITION.TOP_CENTER,
-                });
+                toast.error(response.data.message);
                 // alert(response.data.message)
                 Navigate("/login");
             }

@@ -1,7 +1,6 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import toast from 'react-hot-toast';
 
 
 const PrivateRoute = ({ isLoggedIn, children }) => {
@@ -26,9 +25,7 @@ const PrivateRoute = ({ isLoggedIn, children }) => {
         return children;
     }
     else {
-        // toast.error("Please Login First", {
-        //     position: toast.POSITION.TOP_CENTER,
-        // });
+        // toast.error("Please Login First");
         return <Navigate to="/login" />
     }
 
